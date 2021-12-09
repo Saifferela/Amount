@@ -12,10 +12,13 @@ public class DuplicateFinder {
     }
 
     public long findAmount(String word) {
-
-        if(word == "" || word == null){
+        if(!repository.isEmpty()){
+            return repository.get(word);
+        }
+        else if(word == "" || word == null){
             return 0;
         }
+
         else{
             for (String oneWordFromList : words) {
                 if (!repository.containsKey(oneWordFromList)) {
@@ -32,10 +35,5 @@ public class DuplicateFinder {
             return 0;
 
         return repository.get(word);
-    }
-
-
-    public Map<String, Long> getRepository() {
-        return repository;
     }
 }
