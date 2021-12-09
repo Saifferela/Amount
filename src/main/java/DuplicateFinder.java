@@ -11,24 +11,24 @@ public class DuplicateFinder {
         this.words = words;
     }
 
+
     public long findAmount(String word) {
-        if(!repository.isEmpty()){
-            return repository.get(word);
-        }
-        else if(word == "" || word == null){
+
+        if(word == "" || word == null){
             return 0;
         }
 
-        else{
-            for (String oneWordFromList : words) {
-                if (!repository.containsKey(oneWordFromList)) {
-                    repository.put(oneWordFromList, 1L);
-                }
-                else {
-                    long count = repository.get(oneWordFromList);
-                    repository.put(oneWordFromList, count + 1);
-                }
+        if(!repository.isEmpty()){
+            return repository.get(word);
+        }
+
+        for (String oneWordFromList : words) {
+            if (!repository.containsKey(oneWordFromList)) {
+                repository.put(oneWordFromList, 1L);
             }
+
+                long count = repository.get(oneWordFromList);
+                repository.put(oneWordFromList, count + 1);
         }
 
         if(!repository.containsKey(word))
